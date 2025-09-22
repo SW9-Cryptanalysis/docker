@@ -1,0 +1,4 @@
+services:
+networks:
+  shared-network:
+    driver: bridge
