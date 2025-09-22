@@ -46,3 +46,24 @@ To clean up unused resources, run below command:
 ```bash
 docker system prune -a --volumes
 ```
+
+## Guide to Adding New Services
+1. **Ensure Folder Structure**: Make sure your new service has its own folder with a Dockerfile.
+2. **Update `docker-compose.yml`**: Add a new service entry in the `docker-compose.yml` file, specifying build context, ports, networks, and dependencies as needed.
+
+Example:
+```yaml
+service1:
+  build: 
+    context: ./service1
+    dockerfile: Dockerfile
+  ports:
+    - "8080:80"
+  networks:
+    - shared-network
+  depends_on:
+    - service2
+```
+3. **Rebuild and Restart**: After updating the `docker-compose.yml`, run `docker compose up --build` to rebuild and start your services.
+
+---
